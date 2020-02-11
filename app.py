@@ -20,7 +20,6 @@ app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
 #init MYSQL
 mysql = MySQL(app)
 
-#Articles = Articles()
 
 @app.route('/')
 def index():
