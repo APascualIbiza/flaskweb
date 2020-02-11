@@ -1,0 +1,36 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+  <small style="color: DodgerBlue; text-align: right;">Saludos, <i class="far fa-user-circle" style="padding: 10px;"></i> {{session.username}}</small>
+  <hr>
+  <h1> Dashboard </h1>      
+  <hr>
+  <table class="table table-striped">
+    <tr>
+      <th>Fecha</th>
+      <th>Prioridad</th>
+      <th>Tipo</th>
+      <th>Usuario</th>
+      <th>Afecta al usuario</th>
+      <th>App</th>
+      <th>Objeto de la actividad</th>
+      <th>Parámetros de la actividad</th>
+      <th>Archivo</th>
+      <th>Vínculo</th>
+    </tr>
+    {% for article in articles %}
+    <tr style="color: DodgerBlue">
+      <td>{{article.timestampa | ts}}</td>
+      <td>{{article.priority}}</td>
+      <td>{{article.type}}</td>
+      <td>{{article.user}}</td>
+      <td>{{article.affecteduser}}</td>
+      <td>{{article.app}}</td>
+      <td>{{article.subject}}</td>
+      <td>{{article.subjectparams}}</td>
+      <td>{{article.file}}</td>
+      <td>{{article.link}}</td>
+    </tr>
+    {% endfor %}
+  </table>
+{% endblock %}

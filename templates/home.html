@@ -1,0 +1,15 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<div class="jumbotron text-center">
+  <h1>MiAppAbastos</h1>
+  <p class="lead">Una aplicación para monitorizar el uso de Nextcloud.</p>
+  {% if session.logged_in == NULL %}
+    <a href="/register" class="btn btn-primary btn-lg">Register</a>
+    <a href="/login" class="btn btn-success btn-lg">Login</a>
+  {% endif %}
+</div>
+<div>
+  <p style="font-size: 16px; color: Dodgerblue; text-align: right;"><i class="fab fa-battle-net"></i>By Amparo Pascual</p>
+</div>
+{% endblock %}

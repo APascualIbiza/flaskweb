@@ -1,0 +1,13 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+  <h1>{{activity.activity_id}}</h1>
+  <small>Por {{activity.user}} en fecha {{activity.timestampa | ts}}</small>
+  <br>
+  <br>
+  <div>
+    <i class="fas fa-pencil-alt fa-rotate-270" style="background:DodgerBlue; color: white; padding: 10px" fa-3x></i>&nbsp;Afecta al usuario: {{activity.affecteduser}}<hr>
+    <i class="fas fa-pencil-alt fa-rotate-270" style="background:DodgerBlue; color: white; padding: 10px" fa-3x></i>&nbsp;Tipo de actividad: {{activity.type | safe }}<hr>
+    <i class="fas fa-pencil-alt fa-rotate-270" style="background:DodgerBlue; color: white; padding: 10px" fa-3x></i>&nbsp;Archivo: {{activity.file | safe }}
+  </div>
+{% endblock %}

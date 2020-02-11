@@ -1,0 +1,10 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+  <h1><i class="fas fa-history"></i>  Nextcloud actividad reciente</h1>
+  <ul class="list-group">
+  {% for activity in activities %}
+    <li class="list-group-item"><a href="activity/{{activity.activity_id}}">{{activity.activity_id}} ---- {{activity.type}} ---- by {{activity.user}} ---- on {{activity.timestampa | ts}}</a></li>
+  {% endfor %}
+</ul>
+{% endblock %}
