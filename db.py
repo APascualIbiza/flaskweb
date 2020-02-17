@@ -97,7 +97,7 @@ def fetchAllUserActivities(id):
     cur = mysql.connection.cursor()
 
     #get user activities
-    result = cur.execute("SELECT timestampa ,file FROM app_activity WHERE user = %s", [id])
+    result = cur.execute("SELECT timestampa ,file FROM app_activity WHERE user = %s",[id])
     activities = cur.fetchall()
     cur.close()
 	
@@ -124,9 +124,9 @@ def fetchWebappUser(username):
     cur = mysql.connection.cursor()
 
     #Get user by username
-    result = cur.execute("SELECT * FROM webapp_users WHERE username = %s" ,[username])
+    result = cur.execute("SELECT * FROM webapp_users WHERE username = %s", [username])
     data = cur.fetchone()
- 
+
     cur.close()
     
     return data
@@ -142,4 +142,4 @@ def fetchallActivities():
     allusers = cur.fetchall()
     cur.close()
 
-    return articles
+    return allusers

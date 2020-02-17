@@ -31,7 +31,7 @@ def activities():
 
     activities=db.fetchAllActivities()
     
-    if activities != None and activities.length > 0:
+    if activities != None:
         return render_template('activities.html', activities=activities)
     else:
         msg = 'No se han encontrado actividades.'
@@ -43,28 +43,28 @@ def users():
     users = db.fetchAllAUsersActivities()
     conns = db.fetchAllUsersConnections()
 
-    if conns != None and connections.length > 0:
-        return render_template('users.html',users=users, conns=conns)
+    if conns != None:
+        return render_template('users.html', users=users, conns=conns)
     else:
         msg = 'No se ha conectado.'
-        return render_template('users.html',users=users, msg=msg)
+        return render_template('users.html', users=users, msg=msg)
     
 
 @app.route('/activity/<string:id>/')
 def activity(id):
     
-    activity = db.fetchActivity()
+    activity = db.fetchActivity(id)
 
-    return render_template('activity.html',activity=activity)
+    return render_template('activity.html', activity=activity)
 
 
 @app.route('/user/<string:id>/')
 def user(id):
 
-    user = db.fetchUserName()
-    activities = db.fetchAllUserActivities
+    user = db.fetchUserName(id)
+    activities = db.fetchAllUserActivities(id)
     
-    if activities != None and activities.length > 0:
+    if activities != None:
         return render_template('user.html', user=user, activities=activities)
     else:
         msg = 'No se han encontrado actividades.'
@@ -101,11 +101,11 @@ def login():
         #Get Form Fields
         username = request.form['username']
         password_candidate = request.form['password']
+        
 
-        db.fetchWebappUser(username)
-        data = db.fetchWebappUser()
+        data = db.fetchWebappUser(username)
 
-        if data != None and data.length > 0:
+        if data != None:
         # Get Stored hash
             password = data['password']
 
@@ -154,7 +154,7 @@ def dashboard():
 
     allusers = db.fetchallActivities()
 
-    if allusers != None and allusers.length > 0:
+    if allusers != None:
         return render_template('dashboard.html',articles=allusers)
     else:
         msg = 'No se han encontrado actividades.'
