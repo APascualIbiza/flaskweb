@@ -1,11 +1,11 @@
 from flask import Flask
-from flask_mysqldb import MySQL
+# from flask_mysqldb import MySQL
 
 app = Flask(__name__)
 app.debug = True
 app.secret_key = 'secret123'
 
-#Config MySQL
+# Config MySQL
 app.config['MYSQL_HOST'] = '192.168.0.20'
 app.config['MYSQL_USER'] = 'root'
 app.config['MYSQL_PASSWORD'] = 'abastos'
