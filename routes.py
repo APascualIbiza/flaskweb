@@ -133,10 +133,10 @@ def login():
     return render_template('login.html')
 
 
-#check if user logged in
+# check if user logged in
 def is_logged_in(f):
     @wraps(f)
-    def wrap(*args,**kwargs):
+    def wrap(*args, **kwargs):
         if 'logged_in' in session:
             return f(*args, **kwargs)
         else:
@@ -165,7 +165,7 @@ def dashboard():
         return render_template('dashboard.html', articles=allusers)
     else:
         msg = 'No se han encontrado actividades.'
-        return render_template('dashboard.html',msg=msg)
+        return render_template('dashboard.html', msg=msg)
 
 
 @app.template_filter('ts')
