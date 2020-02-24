@@ -1,17 +1,10 @@
 flask
-
 flask_mysqldb
-
 wtforms
-
 passlib
 functools
-
 json
-
 request
-
 pymysql
-
 datetime
 
