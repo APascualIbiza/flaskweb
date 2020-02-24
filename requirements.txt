@@ -4,8 +4,7 @@ flask_mysqldb
 
 wtforms
 
-passlib.hash
-
+passlib
 functools
 
 json
