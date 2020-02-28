@@ -1,0 +1,18 @@
+FROM centos:7
+     
+MAINTANER amparo.pascual "amparo.pascual@gmail.com"
+   
+RUN yum update -y && \
+yum install -y python-pip python-dev build-essential
+    
+COPY ./requirements.txt /app/requirements.txt
+
+WORKDIR /app
+
+RUN pip install -r requirements.txt
+
+COPY . /app
+
+ENTRYPOINT [ "python" ]
+    
+CMD [ "main.py" ]
