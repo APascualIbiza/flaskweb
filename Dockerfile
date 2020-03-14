@@ -8,7 +8,7 @@ ENV FLASK_DEBUG "true"
    
 RUN yum update -y
 RUN yum --enablerepo=extras install -y epel-release && yum clean all
-RUN yum install -y python3 python3-devel python3-pip mariadb-devel gcc gcc-c++ glibcdevel make
+RUN yum install -y python3 python3-devel python3-pip mariadb-devel gcc gcc-c++ glibc-devel make
 RUN mkdir /app
 
 COPY ./requirements.txt /app/requirements.txt
