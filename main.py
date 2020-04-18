@@ -9,8 +9,8 @@ app.debug = True
 app.secret_key = os.environ.get('SECRET_KEY')
 
 # Config MySQL
-app.config['MYSQL_HOST'] = os.environ.get('SECRET_KEY')
-app.config['MYSQL_USER'] = os.environ.get('SECRET_KEY')
+app.config['MYSQL_HOST'] = os.environ.get('MYSQL_HOST')
+app.config['MYSQL_USER'] = os.environ.get('MYSQL_USER')
 app.config['MYSQL_PASSWORD'] = os.environ.get('MYSQL_PASSWORD')
 app.config['MYSQL_DB'] = 'appBD'
 app.config['MYSQL_PORT'] = 3306
