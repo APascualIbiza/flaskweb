@@ -4,7 +4,7 @@ flask
 flask_mysqldb
 wtforms
 passlib
-request
+requests
 pymysql
 datetime
 
