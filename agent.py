@@ -47,9 +47,9 @@ def update_time(dst_cursor):
 
 def main():
 
-    mysql = pymysql.connect(host="192.168.0.20", user="root", passwd="abastos", db="appBD", port=3306)
-    mysql1 = pymysql.connect(host="192.168.0.20", user="root", passwd="abastos", db="information_schema", port=3306)
-    mysql2 = pymysql.connect(host="192.168.0.20", user="root", passwd="abastos", db="nextcloud", port=3306)
+    mysql = pymysql.connect(host="db", user="root", passwd="abastos", db="appBD", port=3306)
+    mysql1 = pymysql.connect(host="db", user="root", passwd="abastos", db="information_schema", port=3306)
+    mysql2 = pymysql.connect(host="db", user="root", passwd="abastos", db="nextcloud", port=3306)
 
     # create cursor
     dst_cur = mysql.cursor()
