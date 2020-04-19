@@ -17,7 +17,7 @@ def main():
         print(e)
 
     # connection
-    mysql = pymysql.connect(host="192.168.0.20", user="root", passwd="abastos", db="appBD", port=3306)
+    mysql = pymysql.connect(host="db", user="root", passwd="abastos", db="appBD", port=3306)
 
     # create cursor
     cur = mysql.cursor()
