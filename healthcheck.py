@@ -1,11 +1,16 @@
 import pymysql
 import requests
 
+with open ("/run/secrets/mysql_userr", "r") as secrets:
+    user = secrets.readline().replace("\n","")
+
+with open ("/run/secrets/mysql_rpass", "r") as secrets:
+    password = secrets.readline().replace("\n","")
 
 def main():
 
     # check if nextcloud is up
-    url = "http://192.168.0.20:8080/ocs/v2.php/apps/serverinfo/api/v1/info"
+    url = "http://nextcloud:80/ocs/v2.php/apps/serverinfo/api/v1/info"
 
     payload = {}
     headers = {'Authorization': 'Basic YWJhc3RvczphYmFzdG9z'}
@@ -17,7 +22,7 @@ def main():
         print(e)
 
     # connection
-    mysql = pymysql.connect(host="db", user="root", passwd="abastos", db="appBD", port=3306)
+    mysql = pymysql.connect(host="db", user=user, passwd=password, db="appBD", port=3306)
 
     # create cursor
     cur = mysql.cursor()
