@@ -43,7 +43,7 @@ def copy_table(src_name, src_cursor, dst_name, dst_cursor):
 def update_time(dst_cursor):
 
     now = datetime.datetime.now()
-    sql = 'update healthcheck set reg_date = "%s" WHERE service = "webapp"'%(now)
+    sql = 'update healthcheck set reg_date = "%s" WHERE service = "webapp"' %(now)
     try:
         dst_cursor.execute(sql)
 
@@ -63,10 +63,10 @@ def main():
     src_cur2 = mysql2.cursor()
 
 #delete records and regenerate tables
-    delete1 = dst_cur.execute("TRUNCATE TABLE app_activity")
-    delete2 = dst_cur.execute("TRUNCATE TABLE app_users")
-    delete3 = dst_cur.execute("TRUNCATE TABLE app_authtoken")
-    delete4 = dst_cur.execute("TRUNCATE TABLE app_status")
+    dst_cur.execute("TRUNCATE TABLE app_activity")
+    dst_cur.execute("TRUNCATE TABLE app_users")
+    dst_cur.execute("TRUNCATE TABLE app_authtoken")
+    dst_cur.execute("TRUNCATE TABLE app_status")
 
     copy_table("oc_activity", src_cur2,"app_activity", dst_cur)
     copy_table("oc_users", src_cur2, "app_users", dst_cur)
