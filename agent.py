@@ -3,16 +3,17 @@
 import pymysql
 import datetime
 
-with open ("/run/secrets/mysql_userr", "r") as secrets:
+with open("/run/secrets/mysql_userr", "r") as secrets:
     user = secrets.readline().replace("\n","")
 
-with open ("/run/secrets/mysql_rpass", "r") as secrets:
+with open("/run/secrets/mysql_rpass", "r") as secrets:
     password = secrets.readline().replace("\n","")
+
 
 def convert2str(record):
     res = []
     for item in record:
-        if item == None:
+        if item is None:
             res.append('NULL')
         elif type(item) == str:
             res.append('"' + item.replace('"', '\\"') + '"')
@@ -21,6 +22,7 @@ def convert2str(record):
         else:  # for numeric values
             res.append(str(item))
     return ','.join(res)
+
 
 def copy_table(src_name, src_cursor, dst_name, dst_cursor):
     sql = 'select * from %s'%src_name
@@ -39,13 +41,13 @@ def copy_table(src_name, src_cursor, dst_name, dst_cursor):
 
 def update_time(dst_cursor):
 
-    now=datetime.datetime.now()
-    sql = 'update healthcheck set reg_date="%s" WHERE service="webapp"'%(now)
+    now = datetime.datetime.now()
+    sql = 'update healthcheck set reg_date = "%s" WHERE service="webapp"'%(now)
     try:
         dst_cursor.execute(sql)
 
     except Exception as e:
-            print(sql, e)
+        print(sql, e)
 
 
 def main():
@@ -54,12 +56,12 @@ def main():
     mysql1 = pymysql.connect(host="db", user=user, passwd=password, db="information_schema", port=3306)
     mysql2 = pymysql.connect(host="db", user=user, passwd=password, db="nextcloud", port=3306)
 
-    #create cursor
+#create cursor
     dst_cur = mysql.cursor()
     src_cur1 = mysql1.cursor()
     src_cur2 = mysql2.cursor()
-:q
-    #delete records and regenerate tables
+
+#delete records and regenerate tables
     delete1 = dst_cur.execute("TRUNCATE TABLE app_activity")
     delete2 = dst_cur.execute("TRUNCATE TABLE app_users")
     delete3 = dst_cur.execute("TRUNCATE TABLE app_authtoken")
@@ -79,5 +81,5 @@ def main():
 
     print "update_done"
 
-if __name__ =='__main__':
+if __name__ == '__main__':
     main()
