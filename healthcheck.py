@@ -1,11 +1,12 @@
 import pymysql
 import requests
 
-with open ("/run/secrets/mysql_userr", "r") as secrets:
+with open("/run/secrets/mysql_userr", "r") as secrets:
     user = secrets.readline().replace("\n","")
 
-with open ("/run/secrets/mysql_rpass", "r") as secrets:
+with open("/run/secrets/mysql_rpass", "r") as secrets:
     password = secrets.readline().replace("\n","")
+
 
 def main():
 
