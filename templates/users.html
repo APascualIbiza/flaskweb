@@ -10,7 +10,7 @@
         </tr>
         {% for user in users %}
         <tr>
-          <td><a href="user/{{user.uid}}">{{user.uid}}</a></td>
+          <td><a href="{{url_for('user', _external=True, _scheme='https', id=user.uid)}}">{{user.uid}}</a></td>
           <td>{{user.displayname}}</td>
         </tr>
         {% endfor %}  
