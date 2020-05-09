@@ -11,9 +11,7 @@ app.config['SERVER_NAME'] = 'nginx.server.com:8444'
 app.config['MYSQL_HOST'] = 'db'
 app.config['MYSQL_USER'] = os.environ.get('MYSQL_USER')
 app.config['MYSQL_PASSWORD'] = os.environ.get('MYSQL_PASSWORD')
-app.config.update(dict(
-  PREFERRED_URL_SCHEME = 'https'
-))
+app.config.update(dict(PREFERRED_URL_SCHEME = 'https'))
 app.config['MYSQL_DB'] = 'appBD'
 app.config['MYSQL_PORT'] = 3306
 app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
