@@ -54,7 +54,7 @@ def users():
         return render_template('users.html', users=users, msg=msg)
 
 
-@app.route('/activity/<string:id>/')
+@app.route('/activity/<string:id>')
 def activity(id):
 
     activity = db.fetchActivity(id)
@@ -96,7 +96,7 @@ def register():
 
         flash("Ud. está ahora registrado, puede autenticarse.", 'success')
 
-        redirect(url_for('login'))
+        redirect(url_for('login', _external=True, _scheme='https'))
     return render_template('register.html', form=form)
 
 
@@ -121,7 +121,7 @@ def login():
                 session['username'] = username
 
                 flash('Ud. está ahora autenticado.', 'success')
-                return redirect(url_for('dashboard'))
+                return redirect(url_for('dashboard', _external=True, _scheme='https'))
             else:
                 error = 'El login ha fallado.'
                 return render_template('login.html', error=error)
@@ -141,7 +141,7 @@ def is_logged_in(f):
             return f(*args, **kwargs)
         else:
             flash('No autorizado, por favor, autentíquese.', 'danger')
-            return redirect(url_for('login'))
+            return redirect(url_for('login', _external=True, _scheme='https'))
     return wrap
 
 
@@ -151,7 +151,7 @@ def is_logged_in(f):
 def logout():
     session.clear()
     flash('Ya no está autenticado.', 'success')
-    return redirect(url_for('login'))
+    return redirect(url_for('login', _external=True, _scheme='https'))
 
 
 # Dashboard
