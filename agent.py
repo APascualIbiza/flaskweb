@@ -42,8 +42,8 @@ def copy_table(src_name, src_cursor, dst_name, dst_cursor):
 
 def update_time(dst_cursor):
 
-    now = datetime.datetime.now()
-    sql = 'update healthcheck set reg_date = "%s" WHERE service = "webapp"' %(now)
+    #now = datetime.datetime.now()
+    sql = 'update healthcheck set reg_date = NULL WHERE service = "webapp"'
     try:
         dst_cursor.execute(sql)
 
