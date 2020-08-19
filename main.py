@@ -5,7 +5,7 @@ import os
 app = Flask(__name__)
 app.debug = True
 app.secret_key = os.environ.get('SECRET_KEY')
-app.config['SERVER_NAME'] = 'nginx.server.com:8444'
+app.config['SERVER_NAME'] = '192.168.99.104:32749'
 
 # Config MySQL
 app.config['MYSQL_HOST'] = 'db'
